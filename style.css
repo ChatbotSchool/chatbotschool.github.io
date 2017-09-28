@@ -1,0 +1,88 @@
+body {
+    display: flex;
+    flex-wrap: wrap;
+    font-weight: bold;
+    font-family: 'Encode Sans Expanded';
+}
+
+.info,
+.chatbot {
+    flex: 1 300px;
+    min-width: 0;
+    padding: 15px 0;
+    min-height: 100vh;
+}
+
+.info {
+    text-align: center;
+    color: #963d97;
+    display: flex;
+    flex-direction: column;
+}
+
+.footer {
+    align-content: flex-end;
+}
+
+.chatbot {
+    background: #963d97;
+}
+
+.botui-container {
+    background-color: #963d97;
+}
+
+.fa {
+    padding: 20px;
+    font-size: 30px;
+    width: 50px;
+    text-align: center;
+    text-decoration: none;
+    margin: 5px 2px;
+}
+
+.fa:hover {
+    opacity: 0.7;
+}
+
+.fa-facebook {
+    background: #3B5998;
+    color: white;
+}
+
+.fa-twitter {
+    background: #55ACEE;
+    color: white;
+}
+
+.fa-commenting-o {
+    background: #009ddc;
+    color: white;
+}
+
+.fa-rss {
+    background: #ff6600;
+    color: white;
+}
+
+.fa-linkedin {
+    background: #007bb5;
+    color: white;
+}
+
+.footer {
+    font-size: x-small;
+}
+/* .content > .header {
+    color: black;
+} */
+
+.botui-message-content {
+    border-radius: 5px;
+}
+.txtName {
+    color: white;
+}
+input::placeholder {
+    color: white;
+}

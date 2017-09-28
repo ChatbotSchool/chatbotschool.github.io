@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="copyright" content="&copy; 2017 Chatbot School" />
+    <link rel="shortcut icon" type="image/png" href="favicon.png" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Encode+Sans+Expanded">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/botui/build/botui.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/botui/build/botui-theme-default.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Chatbot School - Become a chatbot developer</title>
+</head>
+
+<body>
+    <div class="info">
+        <div class="log">
+            <img src="logo.png" alt="">
+        </div>
+        <div class="content">
+            <div class="header">
+                <h1>Become a chatbot developer</h1>
+            </div>
+            <div class="content-body">
+                Chatbot School is a learning hub for chatbot development. We help people of all skill level from beginners to experts both
+                technical and non-technical to discover and learn what's possible with Chatbots.
+            </div>
+        </div>
+        <br/>
+        <br/>
+        <div class="social">
+            <a href="https://www.facebook.com/ChatbotSchool/" target="_blank" class="fa fa-facebook fa-2x" title="Facebook"></a>
+            <a href="https://twitter.com/ChatbotSchool" target="_blank" class="fa fa-twitter fa-2x" title="Twitter"></a>
+            <!-- <a href="#" class="fa fa-linkedin fa-2x" title="LinkedIn"></a>
+            <a href="#" class="fa fa-commenting-o fa-2x" title="Facebook Messanger"></a> -->
+            <a href="#" class="fa fa-rss fa-2x" title="Blog"></a>
+        </div>
+
+        <div class="footer">
+            <div id="footer" xmlns:dc="http://purl.org/dc/elements/1.1/">
+                <p id="copyright" property="dc:rights">&copy;
+                    <span property="dc:dateCopyrighted">2017</span>
+                    <span property="dc:publisher">Chatbot School</span>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="chatbot">
+        <div id="botui-app">
+            <bot-ui></bot-ui>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/vue/latest/vue.min.js"></script>
+    <script src="https://unpkg.com/botui/build/botui.min.js"></script>
+
+    <script>
+        var botui = new BotUI('botui-app');
+        let name, email;
+
+        botui.message.bot({ delay: 200, content: 'Hi there!' })
+            .then(() => botui.message.bot({ delay: 1000, content: 'Welcome to Chatbot School 🤖!' }))
+            .then(() => botui.message.bot({ delay: 1000, content: 'How are you doing today?' }))
+            .then(() => botui.action.button({ delay: 1000, action: [{ text: '🙂 Good', value: 'good' }, { text: '😄 Really Good', value: 'really_good' }] })
+                .then((res) => botui.message.bot({ delay: 1000, content: 'You are feeling ' + res.text + '!' })))
+            .then(() => botui.message.bot({ delay: 1000, content: 'Do you know I am one month old?' }))
+            .then(() => botui.message.bot({ delay: 1000, content: 'I am growing everyday thank to my master 😊.' }))
+            .then(() => botui.message.bot({ delay: 1000, content: 'He is working hard to make me intelligent 💡.' }))
+            .then(() => botui.message.bot({ delay: 1000, content: 'You know I really like you 👍. Can we keep in touch 😎?' }))
+            .then(() => botui.action.button({ delay: 1000, action: [{ text: 'Yes', value: 'yes' }, { text: 'No', value: 'no' }] }))
+            .then(res => res.value === 'yes' ? botui.message.bot({ delay: 1000, content: 'What should I call you?' }) : Promis.reject())
+            .then(() => botui.action.text({ delay: 1000, action: { value: name, placeholder: 'John Doe', cssClass: 'txtName' } }))
+            .then(res => res.value)
+            .then(res => { name = res; botui.message.bot({ delay: 1000, content: `Thank you ${name}.` }) })
+            .then(() => botui.message.bot({ delay: 1000, content: 'May I have your email address so that I can inform you latest update in Chatbot School?' }))
+            .then(() => botui.action.text({ delay: 1000, action: { value: email, placeholder: 'John.Doe@email.com', cssClass: 'txtName' } }))
+            .then(res => res.value)
+            .then(email => { console.log(`name: ${name}, email: ${email}`); return email; })
+            .then(emailAddress => botui.message.bot({ delay: 1000, content: `Your email address: ${emailAddress}` }))
+            .then(() => Promise.reject())
+            .catch(() => botui.message.bot({ delay: 1000, content: 'Thank you! It was a pleasure chatting with you. Hope to see you soon 👀.' }))
+    </script>
+
+</body>
+
+</html>
